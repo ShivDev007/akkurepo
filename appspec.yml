@@ -1,14 +1,9 @@
 version: 0.0
 os: linux
-files:
-  - source: /
-    destination: /home/ec2-user/flask-app
-    overwrite: yes
-
 hooks:
   BeforeInstall:
     - location: scripts/stop.sh
-      runas: ec2-user
+      runas: root
   AfterInstall:
     - location: scripts/start.sh
-      runas: ec2-user
+      runas: root

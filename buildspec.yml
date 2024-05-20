@@ -10,13 +10,13 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t akanksha2501/flask-app:latest .
+      - docker build -t akanksha2501/frontend:latest .
       - echo Build stage completed on `date`
 
   post_build:
     commands:
       - echo Pushing the Docker image to Docker Hub...
-      - docker push akanksha2501/flask-app:latest
+      - docker push akanksha2501/frontend:latest
       - echo Post-build stage completed on `date`
 
 artifacts:
