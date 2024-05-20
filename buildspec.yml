@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - echo "Charu@123" | docker login -u akanksha2501 --password-stdin
+      - echo Pre-build stage completed on `$(date)`
+
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t akanksha2501/flask-app:latest .
+      - echo Build stage completed on `date`
+
+  post_build:
+    commands:
+      - echo Pushing the Docker image to Docker Hub...
+      - docker push akanksha2501/flask-app:latest
+      - echo Post-build stage completed on `date`
+
+artifacts:
+  files:
+    - app.py
+    - requirements.txt
+    - appspec.yml
+    - scripts/*
+  discard-paths: yes
